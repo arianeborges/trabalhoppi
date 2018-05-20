@@ -1,0 +1,44 @@
+.cadastro {
+    padding-bottom: 100px;
+    margin: 0 0 0 200px;
+	width: 84.4%;
+	background-color: antiquewhite;
+}
+
+h2{
+	color: black;
+    text-align: center;
+}
+.panel.with-nav-tabs.panel-default{
+	margin: 15px 0px 0 180px;
+}
+
+.panel.with-nav-tabs .panel-heading{
+	padding: 20px 5px 0 20px;
+}
+.panel.with-nav-tabs .nav-tabs{
+	border-bottom: none;
+}
+
+.with-nav-tabs.panel-default .nav-tabs > li > a,
+.with-nav-tabs.panel-default .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li > a:focus {
+    color: #777;
+}
+.with-nav-tabs.panel-default .nav-tabs > .open > a,
+.with-nav-tabs.panel-default .nav-tabs > .open > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > .open > a:focus,
+.with-nav-tabs.panel-default .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li > a:focus {
+    color: #777;
+	background-color: #ddd;
+	border-color: transparent;
+}
+.with-nav-tabs.panel-default .nav-tabs > li.active > a,
+.with-nav-tabs.panel-default .nav-tabs > li.active > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li.active > a:focus {
+	color: #555;
+	background-color: #fff;
+	border-color: #ddd;
+	border-bottom-color: transparent;
+}
