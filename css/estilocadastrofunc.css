@@ -1,20 +1,25 @@
-.cadastro {
-    padding-bottom: 100px;
-    margin: 0 0 0 200px;
-	width: 84.4%;
+body{
 	background-color: antiquewhite;
+}
+
+.cadastro {
+	width: 100%;
+	padding-bottom: 50px;
 }
 
 h2{
 	color: black;
-    text-align: center;
+	text-align: left;
+	font-size: 18pt;
 }
+
 .panel.with-nav-tabs.panel-default{
-	margin: 15px 0px 0 180px;
+	margin: auto;
+	padding-bottom: 10px;
 }
 
 .panel.with-nav-tabs .panel-heading{
-	padding: 20px 5px 0 20px;
+	padding: 10px 10px 0 20px;
 }
 .panel.with-nav-tabs .nav-tabs{
 	border-bottom: none;
@@ -41,4 +46,11 @@ h2{
 	background-color: #fff;
 	border-color: #ddd;
 	border-bottom-color: transparent;
+}
+
+@media screen and (max-height: 350px) {
+	h2{
+		font-size: 13pt;
+		text-align: center;
+	}
 }

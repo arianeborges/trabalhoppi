@@ -1,40 +1,9 @@
-.header{
-    position: relative;
-    background-color: black;
-    overflow: hidden;
-    padding: 14px 16px;
-}
 
-.menu {
-    margin: 0 auto;
-    text-align: center;
-}
-
-.menu li {
-    display: inline-block;
-    height: 4em;
-}
-
-.menu a {
-    padding: 10px 15px 10px 10px;
-    display: block;
-    width: 10em;
-    line-height: 3em;
-    /* background-color: #fed;  */
-    border-radius: 20px;
-    font-size: 18px;
-    font-family: Arial, Helvetica, sans-serif;
-
-}
-
-.menu a:hover {
- 
-    color: #fed;
-    background-color: #abc;
-    text-decoration: none;
-    padding: 0% auto;
-    font-weight: bolder;
-
+.navbar-nav.navbar-center {
+    
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
 }
 
 .modal-header {
@@ -43,6 +12,6 @@
 
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    width: 60%; /* Could be more or less, depending on screen size */
+    margin: 5% auto 15% auto; 
+    width: 60%; 
 }

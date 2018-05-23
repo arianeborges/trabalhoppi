@@ -1,44 +1,5 @@
 <?php include "header.php" ;?>
-<!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-
-  <title>Agendamento</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <script type="text/javascript" src="./js/jquery.maskedinput-1.3.1.min.js"></script>
-
-  <!-- estilos css -->
-  <link rel="stylesheet" href="css/estilopaginaagendamento.css?v=15">
-
-  <!-- mascara de telefone -->
-  <script type="text/javascript">// <![CDATA[
-    jQuery(function ($) {
-      $.mask.definitions['~'] = '[+-]';
-      //Inicio Mascara Telefone
-      $("#telefonepaciente").mask("(99) 9999-9999?9").ready(function (event) {
-        var target, phone, element;
-        target = (event.currentTarget) ? event.currentTarget : event.srcElement;
-        phone = target.value.replace(/\D/g, '');
-        element = $(target);
-        element.unmask();
-        if (phone.length > 10) {
-          element.mask("(99) 99999-999?9");
-        } else {
-          element.mask("(99) 9999-9999?9");
-        }
-      });
-    });
-  </script>
-
-</head>
-
-<body>
   <h2> Agendamento de consulta </h2>
 
   <div class="container agendamento">
@@ -111,10 +72,4 @@
     </form>
     </div>
 
-    
-   
-</body>
-
-
-</html> 
 <?php include "footer.php" ;?>

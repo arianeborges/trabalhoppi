@@ -1,73 +1,52 @@
-<?php include "headerrestrito.php" ?>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <title>Clinica Melhor Sorriso</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  
-  <!-- estilos css -->
-  <link rel="stylesheet" href="css/estilolistagens.css?v=15">
-
-</head>
-
-<body>
+<?php include "sidebar.php" ?>
 
   <div class="container lista">
-		<h2>Lista de Contatos</h2>
-
+		<h2>LISTA DE CONTATOS</h2>
+		<div class = "table-responsive">
 			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Nome do Cliente</th>
-						<th>E-mail do Cliente</th>
-						<th>Data da Consulta</th>
-						<th>Motivo do Contato</th>
-                        <th>Mensagem</th>              
-					</tr>
-				</thead>
+					<thead>
+						<tr>
+							<th>Nome do Cliente</th>
+							<th>E-mail do Cliente</th>
+							<th>Data da Consulta</th>
+							<th>Motivo do Contato</th>
+							<th>Mensagem</th>              
+						</tr>
+					</thead>
+					
+					<!-- <tbody>
+				<?php
 				
-				<!-- <tbody>
-			<?php
+					if ($arraySeries != "")
+					{
+					
+							foreach ($arraySeries as $serie)
+							{       
+								echo "
+								<tr>
+								<td>$serie->nome</td>
+								<td>$serie->lugar</td>
+								<td>$serie->temporadas</td>
+								<td>$serie->genero</td>
+								<td>$serie->datalanc</td>         
+								</tr>      
+								";
+							}
+					}
+					
+				?>    
+					
+					</tbody> -->
+				</table>
+
 			
-				if ($arraySeries != "")
-				{
-				
-						foreach ($arraySeries as $serie)
-						{       
-							echo "
-							<tr>
-							<td>$serie->nome</td>
-							<td>$serie->lugar</td>
-							<td>$serie->temporadas</td>
-							<td>$serie->genero</td>
-							<td>$serie->datalanc</td>         
-							</tr>      
-							";
-						}
-				}
-				
-			?>    
-				
-				</tbody> -->
-			</table>
-
-		
-		<!-- <?php
-		
-		if ($erro != "")
-			echo "<p class='text-danger'>A operação não pode ser realizada: $erro</p>";
-		
-		?> -->
-		
+			<!-- <?php
+			
+			if ($erro != "")
+				echo "<p class='text-danger'>A operação não pode ser realizada: $erro</p>";
+			
+			?> -->
+		</div>
 	</div>
-
-</body>
-</html>
 
 <?php include "footer.php" ?>
