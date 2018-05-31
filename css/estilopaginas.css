@@ -1,0 +1,321 @@
+/* css pagina index */
+
+.autoslides1 {
+    position: relative;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+  
+.autoslides1 li {
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.autoslides1 li:first-child {
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.autoslides1 img {
+    width: 300px;
+    height: 250px;
+    border: 0;
+    float: left;
+    border: transparent thin solid;
+    margin: 0px 10px 10px 0;
+}
+
+.autoslides2 {
+    position: relative;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+  
+.autoslides2 li {
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.autoslides2 li:first-child {
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.autoslides2 img {
+    width: 300px;
+    height: 250px;
+    border: 0;
+    float: left;
+    border: transparent thin solid;
+    margin: 0px 10px 10px 0;
+}
+
+/* fim css pagina index */
+
+
+/* css pagina restrita */
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 20px 100px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #3c9ff0;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    font-size: 36px;
+    margin-left: 150px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* fim css pagina restrita */
+
+/* css pagina cadastrofunc */
+
+body{
+	background-color: antiquewhite;
+}
+
+.cadastro {
+	width: 100%;
+	padding-bottom: 50px;
+}
+
+h2{
+	color: black;
+	text-align: left;
+	font-size: 18pt;
+}
+
+.panel.with-nav-tabs.panel-default{
+	margin: auto;
+	padding-bottom: 10px;
+}
+
+.panel.with-nav-tabs .panel-heading{
+	padding: 10px 10px 0 20px;
+}
+.panel.with-nav-tabs .nav-tabs{
+	border-bottom: none;
+}
+
+.with-nav-tabs.panel-default .nav-tabs > li > a,
+.with-nav-tabs.panel-default .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li > a:focus {
+    color: #777;
+}
+.with-nav-tabs.panel-default .nav-tabs > .open > a,
+.with-nav-tabs.panel-default .nav-tabs > .open > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > .open > a:focus,
+.with-nav-tabs.panel-default .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li > a:focus {
+    color: #777;
+	background-color: #ddd;
+	border-color: transparent;
+}
+.with-nav-tabs.panel-default .nav-tabs > li.active > a,
+.with-nav-tabs.panel-default .nav-tabs > li.active > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li.active > a:focus {
+	color: #555;
+	background-color: #fff;
+	border-color: #ddd;
+	border-bottom-color: transparent;
+}
+
+@media screen and (max-height: 350px) {
+	h2{
+		font-size: 13pt;
+		text-align: center;
+	}
+}
+
+/* fim css pagina cadastrofunc */
+
+/* css pagina footer */
+
+/* fim css pagina footer */
+
+/* css pagina header */
+
+
+.navbar-nav.navbar-center {
+    
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.modal-header {
+    background-color: greenyellow;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; 
+    width: 60%; 
+}
+
+/* fim css pagina header */
+
+/* css pagina listagens */
+
+body{
+    background-color: #F0FFFF ;
+}
+
+h2{
+    color: black;
+    text-align: left;
+    font-size: 15pt;
+}
+
+.table-striped {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: center;
+    padding: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+
+/* fim css pagina listagens */
+
+/* fim css pagina agendamento */
+
+h2{
+    text-align: center;
+}
+
+input[type=text], select, textarea {
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    margin-top: 6px; 
+    margin-bottom: 16px; 
+    resize: vertical 
+}
+
+.agendamento {
+    border-radius: 5px;
+    background-color: gainsboro;
+    padding: 20px;
+    margin: auto;
+} 
+
+/* fim css pagina agendamento */
+
+/* css pagina contato */
+
+input[type=text], select, textarea {
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    margin-top: 6px; 
+    margin-bottom: 16px; 
+    resize: vertical 
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.contato {
+    border-radius: 5px;
+    background-color: gainsboro;
+    padding: 20px;
+    margin: auto;
+} 
+
+h2{
+    text-align: center;
+}
+
+/* fim css pagina contato */
+
+/*  css pagina galeria */
+
+.center {
+    margin: 0 auto;
+    border: 0;
+}
+
+th, td {
+    width: 300px;
+    height: 250px;
+    padding: 10px;
+}
+
+.imagem {
+    width: 300px;
+    height: 250px;
+    border-radius: 20px;
+    display: none;
+}
+
+h2{
+    text-align: center;
+}
+
+/* fim css pagina galeria */

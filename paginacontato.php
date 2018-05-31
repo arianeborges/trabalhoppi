@@ -1,8 +1,50 @@
 <?php include "header.php"; ?>
 
+<?php
+
+require "conexaobd.php"; //inclui arquivo com os dados e funções de conexão
+
+function filtraEntrada($dado){
+
+  $dado = trim($dado);
+  $dado = stripslashes($dado);
+  $dado = htmlspecialchars($dado);
+
+  return $dado;
+}
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+
+  $erro = "";
+
+  $nome = $email = $motivo = $mensagem = "";
+  $nome = filtraEntrada($_POST["nome"]);
+  $email = filtraEntrada($_POST["email"]);
+  $motivo = filtraEntrada($_POST["motivo"]);
+  $mensagem = filtraEntrada($_POST["mensagem"]);
+
+  try{
+
+    $conexao = conectabd();
+
+    $sql = "INSERT INTO Contato( nome, email, motivo, mensagem ) 
+    VALUES ('$nome','$email','$motivo','$mensagem')"; 
+
+    if(! $conexao->query($sql))
+      throw new Exception ("Falha na inserção dos dados: " . $conexao->error);
+    
+    $formProcSucesso = true;
+  }catch(Exception $e){
+
+    $erro = $e->getMessage();
+  }
+
+}
+?>
+
 <h2> Contato </h2>
 <div class="container contato">
-        <form class="form-horizontal" method="POST">
+        <form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <div class="form-group">
                     <label class="control-label col-sm-2" for="nome">Nome:</label>
                     <div class="col-sm-8">
@@ -43,7 +85,17 @@
                   </div>
                   
             </form>
-</div>
 
+            <?php
+          if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+            if($erro == "")
+              echo "<script>alert('Obrigada pelo seu contato!')</script>";
+            else
+              echo "<script>alert('Contato não realizado:', $erro)</script>";
+          }
+        ?>
+
+</div>
 
 <?php include "footer.php"; ?>

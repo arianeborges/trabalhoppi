@@ -17,26 +17,7 @@
     <script src="js/scriptindex.js"></script>
 
     <!-- estilos css -->
-    <link rel="stylesheet" href="css/estiloheader.css?v=15">
-    <link rel="stylesheet" href="css/estilofooter.css?v=15">
-
-    <!-- index -->    
-    <link rel="stylesheet" href="css/estilopaginaindex.css?v=15">
-
-    <!-- estilos cadastrofunc -->
-    <link rel="stylesheet" href="css/estilocadastrofunc.css?v=15">
-
-    <!-- estilos listagens -->
-    <link rel="stylesheet" href="css/estilolistagens.css?v=15">
-
-     <!-- estilos pagina agendamento -->
-    <link rel="stylesheet" href="css/estilopaginaagendamento.css?v=15">
-
-    <!-- estilos pagina agendamento -->
-    <link rel="stylesheet" href="css/estilopaginacontato.css?v=15">
-
-    <!-- estilos galeria -->
-    <link rel="stylesheet" href="css/estilopaginagaleria.css?v=15">
+    <link rel="stylesheet" href="css/estilopaginas.css?v=15">
 
     <script type="text/javascript">
         $(document).ready(function () {

@@ -11,8 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- estilos css -->
-    <link rel="stylesheet" href="css/estilopaginarestrita.css?v=15">
-    <link rel="stylesheet" href="css/estilofooter.css?v=15"> 
+    <link rel="stylesheet" href="css/estilopaginas.css?v=15">
     <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
