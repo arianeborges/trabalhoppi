@@ -27,8 +27,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $conexao = conectabd();
 
-    $sql = "INSERT INTO Contato( nome, email, motivo, mensagem ) 
-    VALUES ('$nome','$email','$motivo','$mensagem')"; 
+    $sql = "INSERT INTO Contato( nome, data, email, motivo, mensagem ) 
+    VALUES ('$nome', now() ,'$email','$motivo','$mensagem')"; 
 
     if(! $conexao->query($sql))
       throw new Exception ("Falha na inserção dos dados: " . $conexao->error);
@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 ?>
 
 <h2> Contato </h2>
-<div class="container contato">
+<div class="container contato card">
         <form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <div class="form-group">
                     <label class="control-label col-sm-2" for="nome">Nome:</label>

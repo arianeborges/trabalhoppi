@@ -2,7 +2,7 @@
 
   <h2> Agendamento de consulta </h2>
 
-  <div class="container agendamento">
+  <div class="container agendamento card">
 
     <form class="form-horizontal" method="POST">
 

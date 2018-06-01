@@ -34,6 +34,6 @@
         <a href="index.php"><span class="glyphicon glyphicon-log-out"></span></a>
     </div>
 
-    <span style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+    <span style="padding: 20px; margin-top:20px; font-size:25px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
 
     

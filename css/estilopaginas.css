@@ -1,5 +1,54 @@
 /* css pagina index */
 
+.index-banner {
+    width: 600px;
+    padding-left: 30%;
+    padding-bottom: 25px;
+}
+
+@media(min-width: 900px) {
+    .index-banner {
+        width: 800px;
+        padding-left: 15%;
+        padding-bottom: 50px;
+    }
+}
+
+@media(min-width: 1200px) {
+    .index-banner {
+        width: 1100px;
+        padding-left: 15%;
+        padding-bottom: 50px;
+    }
+}
+
+
+.card {
+    padding: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    background-color: #fff;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.super-header {
+    font-size: 5em;
+}
+
+.nice-paragraph {
+    font-size: 1.5em;
+}
+
+/* .margin-above {
+    border-top: 1px solid gray;
+    margin-top: 20px;
+    padding-top: 20px;
+} */
+
 .autoslides1 {
     position: relative;
     list-style: none;
@@ -68,6 +117,23 @@
 
 
 /* css pagina restrita */
+
+.card-adm {
+    padding: 0px;
+    height: 200px;
+}
+.card-adm h2 {
+    padding-top: 20px;
+    font-size: 3em;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.card-adm p {
+    font-size: 5em;
+    text-align: right;
+    padding-right: 20px;
+}
 
 .sidenav {
     height: 100%;
@@ -174,13 +240,26 @@ h2{
 
 /* css pagina footer */
 
+.footer {
+    padding-top: 50px;
+    width:100%;
+    text-align: center;
+}
+
 /* fim css pagina footer */
 
 /* css pagina header */
 
+.navbar-inverse {
+    background-color: #3E67FF !important;
+    border-color: #3E67FF !important;
+}
+
+.navbar-inverse li a {
+    color: #fff !important;
+}
 
 .navbar-nav.navbar-center {
-    
     position: absolute;
     left: 50%;
     transform: translatex(-50%);
