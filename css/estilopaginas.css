@@ -179,19 +179,18 @@
 
 /* css pagina cadastrofunc */
 
-body{
+/* body{
 	background-color: antiquewhite;
-}
-
-.cadastro {
-	width: 100%;
-	padding-bottom: 50px;
 }
 
 h2{
 	color: black;
 	text-align: left;
 	font-size: 18pt;
+} */
+.cadastro {
+	width: 100%;
+	padding-bottom: 50px;
 }
 
 .panel.with-nav-tabs.panel-default{
@@ -278,12 +277,12 @@ h2{
 /* fim css pagina header */
 
 /* css pagina listagens */
-
+/* 
 body{
     background-color: #F0FFFF ;
-}
+} */
 
-h2{
+.listagens{
     color: black;
     text-align: left;
     font-size: 15pt;
@@ -296,15 +295,14 @@ h2{
     border: 1px solid #ddd;
 }
 
-th, td {
+.tabelalistagens th, td {
     text-align: center;
-    padding: 16px;
-}
+    padding: auto;
+} 
 
-tr:nth-child(even) {
+.tabelalistagens tr:nth-child(even) {
     background-color: #f2f2f2
-}
-
+} 
 
 /* fim css pagina listagens */
 
@@ -380,7 +378,7 @@ h2{
     border: 0;
 }
 
-th, td {
+.galeria th, td {
     width: 300px;
     height: 250px;
     padding: 10px;

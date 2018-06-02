@@ -1,11 +1,31 @@
 <?php include "sidebar.php"; ?>
 
+<?php
+
+require "conexaobd.php"; //inclui arquivo com os dados e funções de conexão
+require "funcionario.php";
+
+$arrayFuncionario = "";
+$erro = "";	
+
+try{
+
+	$conexao = conectaBD();
+	$arrayFuncionario = getFuncionario($conexao);
+
+}catch(Exception $e){
+
+	$erro = $e->getMessage();
+}
+
+?>
+
   <div class="container lista">
-		<h2>LISTA DE FUNCIONÁRIOS</h2>
+		<h2 class="listagens">LISTA DE FUNCIONÁRIOS</h2>
 		<div class="table-responsive">
 				<table class="table table-striped">
 					<thead>
-						<tr>
+						<tr class="tabelalistagens">
 							<th>Nome do Funcionário</th>
 							<th>Sexo</th>
 							<th>Cargo</th>
@@ -15,38 +35,39 @@
 						</tr>
 					</thead>
 					
-					<!-- <tbody>
-				<?php
-				
-					if ($arraySeries != "")
-					{
+				<tbody>
+					<?php
 					
-							foreach ($arraySeries as $serie)
-							{       
-								echo "
-								<tr>
-								<td>$serie->nome</td>
-								<td>$serie->lugar</td>
-								<td>$serie->temporadas</td>
-								<td>$serie->genero</td>
-								<td>$serie->datalanc</td>         
-								</tr>      
-								";
-							}
-					}
+						if ($arrayFuncionario != "")
+						{
+						
+								foreach ($arrayFuncionario as $funcionario)
+								{       
+									echo "
+									<tr>
+									<td>$funcionario->nome</td>
+									<td>$funcionario->sexo</td>
+									<td>$funcionario->cargofunc</td>
+									<td>$funcionario->rgfunc</td>
+									<td>$funcionario->logradouro</td>  
+									<td>$funcionario->cidade</td>       
+									</tr>      
+									";
+								}
+						}
+						
+					?>    
 					
-				?>    
-					
-					</tbody> -->
+				</tbody>
 				</table>
 
 			
-			<!-- <?php
+			<?php
 			
 			if ($erro != "")
 				echo "<p class='text-danger'>A operação não pode ser realizada: $erro</p>";
 			
-			?> -->
+			?>
 		</div>
 	</div>
 

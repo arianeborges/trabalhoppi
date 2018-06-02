@@ -2,7 +2,7 @@
 
     <h2>Galeria</h2>
     <table class="center">
-        <tr>
+        <tr class="galeria">
             <td><img class="imagem" src="galeria/slideshow1.png" id="img01"></td>
             <td><img class="imagem" src="galeria/slideshow2.png" id="img02"></td>
             <td><img class="imagem" src="galeria/slideshow3.png" id="img03"></td>

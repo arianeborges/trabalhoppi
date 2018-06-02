@@ -1,11 +1,11 @@
 <?php include "sidebar.php" ?>
 
   <div class="container">	  
-  	<h2>LISTA DE CONTATOS</h2>
+  	<h2 class="listagens">LISTA DE CONTATOS</h2>
 	  		<div class="table-responsive">
 				<table class="table table-striped">
 					<thead>
-						<tr>
+						<tr class="tabelalistagens">
 							<th>Nome do Médico</th>
 							<th>Especialidade</th>
 							<th>Data da Consulta</th>

@@ -42,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 }
 ?>
 
-<h2> Contato </h2>
+<h2> Envie sua mensagem </h2>
 <div class="container contato card">
         <form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <div class="form-group">
