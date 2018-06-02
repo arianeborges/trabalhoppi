@@ -40,13 +40,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $conexao = conectabd();
 
-    $sql1 = "INSERT INTO Funcionario(id, nome, datanascimento, sexo, estadocivil, cargofunc, especialidade, cpffunc, rgfunc, outro) 
+    $sql1 = "INSERT INTO Funcionario(id, nomefunc, datanascimento, sexo, estadocivil, cargofunc, especialidade, cpffunc, rgfunc, outro) 
     VALUES (null,'$nome','$datanascimento','$sexo','$estadocivil','$cargofunc','$especialidade','$cpffunc','$rgfunc','$outro')"; 
 
     if(! $conexao->query($sql1))
     throw new Exception ("Falha na inserção dos dados: " . $conexao->error);
 
-    $ultimo_id = "SELECT MAX(id) FROM funcionario"; //pega o ultimo id cadastrado na tabela
+    $ultimo_id = $conexao->insert_id;
 
     $sql2 = "INSERT INTO EnderecoFunc(id_funcionario, cep, estado, cidade, bairro, tipologradouro, logradouro, numero, complemento) 
     VALUES ('$ultimo_id', '$cep', '$estado' ,'$cidade','$bairro','$tipologradouro', '$logradouro', '$numero', '$complemento')"; 
@@ -260,9 +260,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         if($erro == "")
-                        echo "<script>alert('Cadastro realizado!')</script>";
+                        echo "<script>alert('Cadastro realizado!');</script>";
                         else
-                        echo "<script>alert('Cadastro não realizado:', $erro)</script>";
+                        echo "$erro";
                     }
                 ?>
 
