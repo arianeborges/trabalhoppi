@@ -1,4 +1,13 @@
-<?php include "sidebar.php" ?>
+<?php include "sidebar.php" ;
+
+session_start();
+
+if(!$_SESSION['login']) {
+    header("Location:index.php");
+    die();
+}
+
+?>
 
 <?php
 
@@ -22,8 +31,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
   $datanascimento = filtraEntrada($_POST["datanascimento"]); 
   $sexo = filtraEntrada($_POST["sexo"]); 
   $estadocivil = filtraEntrada($_POST["estadocivil"]); 
-  $cargofunc = filtraEntrada($_POST["cargofunc"]); 
-  $especialidade = filtraEntrada($_POST["especialidade"]); 
+  $cargofunc = filtraEntrada($_POST["cargofunc"]);
+
+  if(isset($_POST["especialidade"]))
+    $especialidade = filtraEntrada($_POST["especialidade"]); 
+
   $cpffunc = filtraEntrada($_POST["cpffunc"]); 
   $rgfunc = filtraEntrada($_POST["rgfunc"]); 
   $outro = filtraEntrada($_POST["outro"]); 
@@ -40,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $conexao = conectabd();
 
-    $sql1 = "INSERT INTO Funcionario(id, nomefunc, datanascimento, sexo, estadocivil, cargofunc, especialidade, cpffunc, rgfunc, outro) 
+    $sql1 = "INSERT INTO Funcionario(id, nome, datanascimento, sexo, estadocivil, cargofunc, especialidade, cpffunc, rgfunc, outro) 
     VALUES (null,'$nome','$datanascimento','$sexo','$estadocivil','$cargofunc','$especialidade','$cpffunc','$rgfunc','$outro')"; 
 
     if(! $conexao->query($sql1))
@@ -125,14 +137,14 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                             <select name="cargofunc" id="cargofunc" required>
                                                 <option value="" selected>Selecione</option>
                                                 <option value="secretario">Secretário</option>
-                                                <option value="dentista">Cirurgião Dentista</option>
-                                                <option value="faxineiro">Faxineiro</option>
+                                                <option value="dentista">Medico</option>
+                                                <option value="enfermeiro">Enfermeiro</option>
                                                 <option value="informatica">Suporte</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div id="especialidades" class="form-group" hidden="true">
                                         <label class="control-label col-sm-4" for="especialidade">Especialidade médica:</label>
                                         <div class="col-sm-3">
                                             <select name="especialidade" id="especialidade" required>
@@ -260,13 +272,30 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         if($erro == "")
-                        echo "<script>alert('Cadastro realizado!');</script>";
+                            echo "<script>alert('Cadastro realizado!');</script>";
                         else
-                        echo "$erro";
+                            echo "$erro";
                     }
                 ?>
 
             </div>
     </div>
+
+    <script>
+
+        $(document).ready(function() {
+            $("#cargofunc").on('change', function(e) {
+
+                var opt = $("option:selected", this).text();
+
+                if(opt == "Medico")
+                    $("#especialidades").show();
+                else 
+                    $("#especialidades").hide();  
+                    
+            })
+        });
+
+    </script>
 
 <?php include "footer.php" ?>

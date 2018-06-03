@@ -1,5 +1,10 @@
 /* css pagina index */
 
+.success-message {
+    color:green;
+    font-weight: bold;
+}
+
 .index-banner {
     width: 600px;
     padding-left: 30%;

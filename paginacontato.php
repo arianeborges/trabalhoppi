@@ -2,17 +2,6 @@
 
 <?php
 
-require "conexaobd.php"; //inclui arquivo com os dados e funções de conexão
-
-function filtraEntrada($dado){
-
-  $dado = trim($dado);
-  $dado = stripslashes($dado);
-  $dado = htmlspecialchars($dado);
-
-  return $dado;
-}
-
 if($_SERVER["REQUEST_METHOD"]=="POST"){
 
   $erro = "";
