@@ -1,4 +1,15 @@
-<?php include "sidebar.php"?>
+<?php 
+
+include "sidebar.php";
+
+session_start();
+
+if(!$_SESSION['login']) {
+    header("Location:index.php");
+    die();
+}
+
+?>
 
 <h1 style="text-align: center"> Área Administrativa </h1>
 

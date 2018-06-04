@@ -1,4 +1,13 @@
-<?php include "sidebar.php" ?>
+<?php include "sidebar.php";
+
+session_start();
+
+if(!$_SESSION['login']) {
+    header("Location:index.php");
+    die();
+}
+
+?>
 
   <div class="container">	  
   	<h2 class="listagens">LISTA DE CONTATOS</h2>

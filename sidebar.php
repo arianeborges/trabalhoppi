@@ -26,12 +26,13 @@
 <body>
 
     <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>        
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="paginarestrita.php">INICIO</a>        
         <a href="cadastrofunc.php">NOVO FUNCIONÁRIO</a>
         <a href="listafunc.php">LISTAR FUNCIONÁRIOS</a>
         <a href="listacontatos.php">LISTAR CONTATOS</a>
         <a href="listaagenda.php">LISTAR AGENDAMENTOS</a>
-        <a href="index.php"><span class="glyphicon glyphicon-log-out"></span></a>
+        <a href="logout.php"><span class="glyphicon glyphicon-log-out"></span></a>
     </div>
 
     <span style="padding: 20px; margin-top:20px; font-size:25px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>

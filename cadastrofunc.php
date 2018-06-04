@@ -1,4 +1,13 @@
-<?php include "sidebar.php" ?>
+<?php include "sidebar.php" ;
+
+session_start();
+
+if(!$_SESSION['login']) {
+    header("Location:index.php");
+    die();
+}
+
+?>
 
 <!-- Adicionando Javascript -->
 <script type="text/javascript" >
@@ -87,11 +96,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
   $nome = filtraEntrada($_POST["nome"]);
   $datanascimento = filtraEntrada($_POST["datanascimento"]); 
   $sexo = filtraEntrada($_POST["sexo"]); 
+<<<<<<< HEAD
   $ufcivil = filtraEntrada($_POST["ufcivil"]); 
   $cargo = filtraEntrada($_POST["cargo"]); 
   $especialidade = filtraEntrada($_POST["especialidade"]); 
   $cpf = filtraEntrada($_POST["cpf"]); 
   $rg = filtraEntrada($_POST["rg"]); 
+=======
+  $estadocivil = filtraEntrada($_POST["estadocivil"]); 
+  $cargofunc = filtraEntrada($_POST["cargofunc"]);
+
+  if(isset($_POST["especialidade"]))
+    $especialidade = filtraEntrada($_POST["especialidade"]); 
+
+  $cpffunc = filtraEntrada($_POST["cpffunc"]); 
+  $rgfunc = filtraEntrada($_POST["rgfunc"]); 
+>>>>>>> e8e7af7ab6fced065428a1f5c2e4eb77b521369c
   $outro = filtraEntrada($_POST["outro"]); 
   $cep = filtraEntrada($_POST["cep"]); 
   $uf = filtraEntrada($_POST["uf"]); 
@@ -106,8 +126,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $conexao = conectabd();
 
+<<<<<<< HEAD
     $sql1 = "INSERT INTO Funcionario(id, nomefunc, datanascimento, sexo, estadocivil, cargo, especialidade, cpf, rg, outro) 
     VALUES (null,'$nome','$datanascimento','$sexo','$estadocivil','$cargo','$especialidade','$cpf','$rg','$outro')"; 
+=======
+    $sql1 = "INSERT INTO Funcionario(id, nome, datanascimento, sexo, estadocivil, cargofunc, especialidade, cpffunc, rgfunc, outro) 
+    VALUES (null,'$nome','$datanascimento','$sexo','$estadocivil','$cargofunc','$especialidade','$cpffunc','$rgfunc','$outro')"; 
+>>>>>>> e8e7af7ab6fced065428a1f5c2e4eb77b521369c
 
     if(! $conexao->query($sql1))
     throw new Exception ("Falha na inserção dos dados: " . $conexao->error);
@@ -191,14 +216,14 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                             <select name="cargo" id="cargo" required>
                                                 <option value="" selected>Selecione</option>
                                                 <option value="secretario">Secretário</option>
-                                                <option value="dentista">Cirurgião Dentista</option>
-                                                <option value="faxineiro">Faxineiro</option>
+                                                <option value="dentista">Medico</option>
+                                                <option value="enfermeiro">Enfermeiro</option>
                                                 <option value="informatica">Suporte</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div id="especialidades" class="form-group" hidden="true">
                                         <label class="control-label col-sm-4" for="especialidade">Especialidade médica:</label>
                                         <div class="col-sm-3">
                                             <select name="especialidade" id="especialidade" required>
@@ -330,13 +355,30 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         if($erro == "")
-                        echo "<script>alert('Cadastro realizado!');</script>";
+                            echo "<script>alert('Cadastro realizado!');</script>";
                         else
-                        echo "$erro";
+                            echo "$erro";
                     }
                 ?>
 
             </div>
     </div>
+
+    <script>
+
+        $(document).ready(function() {
+            $("#cargofunc").on('change', function(e) {
+
+                var opt = $("option:selected", this).text();
+
+                if(opt == "Medico")
+                    $("#especialidades").show();
+                else 
+                    $("#especialidades").hide();  
+                    
+            })
+        });
+
+    </script>
 
 <?php include "footer.php" ?>
