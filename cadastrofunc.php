@@ -1,5 +1,71 @@
 <?php include "sidebar.php" ?>
 
+<!-- Adicionando Javascript -->
+<script type="text/javascript" >
+
+$(document).ready(function() {
+
+    function limpa_formulário_cep() {
+        // Limpa valores do formulário de cep.
+        $("#logradouro").val("");
+        $("#bairro").val("");
+        $("#cidade").val("");
+        $("#uf").val("");
+    }
+    
+    //Quando o campo cep perde o foco.
+    $("#cep").blur(function() {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = $(this).val().replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                $("#logradouro").val("...");
+                $("#bairro").val("...");
+                $("#cidade").val("...");
+                $("#uf").val("...");
+
+                //Consulta o webservice viacep.com.br/
+                $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                    if (!("erro" in dados)) {
+                        //Atualiza os campos com os valores da consulta.
+                        $("#logradouro").val(dados.logradouro);                        
+                        $("#uf").val(dados.uf);
+                        $("#bairro").val(dados.bairro);
+                        $("#cidade").val(dados.localidade);
+                    } //end if.
+                    else {
+                        //CEP pesquisado não foi encontrado.
+                        limpa_formulário_cep();
+                        alert("CEP não encontrado.");
+                    }
+                });
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    });
+});
+
+</script>
+
 <?php
 
 require "conexaobd.php"; //inclui arquivo com os dados e funções de conexão
@@ -17,18 +83,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
   $erro = "";
 
-  $nome = $datanascimento = $sexo = $estadocivil = $cargofunc = $especialidade = $cpffunc = $rgfunc = $outro = $cep = $estado = $cidade = $bairro = $tipologradouro = $logradouro = $numero = $complemento = "";
+  $nome = $datanascimento = $sexo = $estadocivil = $cargo = $especialidade = $cpf = $rg = $outro = $cep = $uf = $cidade = $bairro = $tipologradouro = $logradouro = $numero = $complemento = "";
   $nome = filtraEntrada($_POST["nome"]);
   $datanascimento = filtraEntrada($_POST["datanascimento"]); 
   $sexo = filtraEntrada($_POST["sexo"]); 
-  $estadocivil = filtraEntrada($_POST["estadocivil"]); 
-  $cargofunc = filtraEntrada($_POST["cargofunc"]); 
+  $ufcivil = filtraEntrada($_POST["ufcivil"]); 
+  $cargo = filtraEntrada($_POST["cargo"]); 
   $especialidade = filtraEntrada($_POST["especialidade"]); 
-  $cpffunc = filtraEntrada($_POST["cpffunc"]); 
-  $rgfunc = filtraEntrada($_POST["rgfunc"]); 
+  $cpf = filtraEntrada($_POST["cpf"]); 
+  $rg = filtraEntrada($_POST["rg"]); 
   $outro = filtraEntrada($_POST["outro"]); 
   $cep = filtraEntrada($_POST["cep"]); 
-  $estado = filtraEntrada($_POST["estado"]); 
+  $uf = filtraEntrada($_POST["uf"]); 
   $cidade = filtraEntrada($_POST["cidade"]); 
   $bairro = filtraEntrada($_POST["bairro"]); 
   $tipologradouro = filtraEntrada($_POST["tipologradouro"]); 
@@ -40,8 +106,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $conexao = conectabd();
 
-    $sql1 = "INSERT INTO Funcionario(id, nomefunc, datanascimento, sexo, estadocivil, cargofunc, especialidade, cpffunc, rgfunc, outro) 
-    VALUES (null,'$nome','$datanascimento','$sexo','$estadocivil','$cargofunc','$especialidade','$cpffunc','$rgfunc','$outro')"; 
+    $sql1 = "INSERT INTO Funcionario(id, nomefunc, datanascimento, sexo, estadocivil, cargo, especialidade, cpf, rg, outro) 
+    VALUES (null,'$nome','$datanascimento','$sexo','$estadocivil','$cargo','$especialidade','$cpf','$rg','$outro')"; 
 
     if(! $conexao->query($sql1))
     throw new Exception ("Falha na inserção dos dados: " . $conexao->error);
@@ -49,7 +115,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $ultimo_id = $conexao->insert_id;
 
     $sql2 = "INSERT INTO EnderecoFunc(id_funcionario, cep, estado, cidade, bairro, tipologradouro, logradouro, numero, complemento) 
-    VALUES ('$ultimo_id', '$cep', '$estado' ,'$cidade','$bairro','$tipologradouro', '$logradouro', '$numero', '$complemento')"; 
+    VALUES ('$ultimo_id', '$cep', '$uf' ,'$cidade','$bairro','$tipologradouro', '$logradouro', '$numero', '$complemento')"; 
 
     if(! $conexao->query($sql2))
       throw new Exception ("Falha na inserção dos dados: " . $conexao->error);
@@ -107,9 +173,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-4" for="estadocivil">Estado Civil:</label>
+                                        <label class="control-label col-sm-4" for="ufcivil">uf Civil:</label>
                                         <div class="col-sm-3">
-                                            <select name="estadocivil" id="estadocivil" required>
+                                            <select name="ufcivil" id="ufcivil" required>
                                                 <option value="" selected>Selecione</option>
                                                 <option value="solteiro">Solteiro</option>
                                                 <option value="casado">Casado</option>
@@ -120,9 +186,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-4" for="cargofunc">Cargo:</label>
+                                        <label class="control-label col-sm-4" for="cargo">Cargo:</label>
                                         <div class="col-sm-4">
-                                            <select name="cargofunc" id="cargofunc" required>
+                                            <select name="cargo" id="cargo" required>
                                                 <option value="" selected>Selecione</option>
                                                 <option value="secretario">Secretário</option>
                                                 <option value="dentista">Cirurgião Dentista</option>
@@ -159,6 +225,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                     </div>
                                     <div class="col-sm-offset-4">
                                         <button type="reset" class="btn btn-danger">Limpar</button>
+                                        <button type="button" class="btn btn-success">Avançar</button>
                                     </div>
 
                             </div>
@@ -166,16 +233,19 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                             <div class="tab-pane fade" id="documentos">
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="cpffunc">CPF:</label>
+                                        <label class="control-label col-sm-3" for="cpf
+                                ">CPF:</label>
                                         <div class="col-sm-2">
-                                            <input type="text" class="form-control" name="cpffunc" id="cpffunc" required>
+                                            <input type="text" class="form-control" name="cpf
+                                    " id="cpf
+                                    " required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="rgfunc">RG:</label>
+                                        <label class="control-label col-sm-3" for="rg">RG:</label>
                                         <div class="col-sm-2">
-                                            <input type="text" class="form-control" name="rgfunc" id="rgfunc" required>
+                                            <input type="text" class="form-control" name="rg" id="rg" required>
                                         </div>
                                     </div>
 
@@ -187,7 +257,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                     </div>
                                     <div class="col-sm-offset-3">
                                         <button type="reset" class="btn btn-danger">Limpar</button>
-                                        <!-- <button> <span class="glyphicon glyphicon-triangle-right"> </span> </button> -->
+                                        <button type="button" class="btn btn-success">Avançar</button>
                                     </div>
 
                             </div>
@@ -196,28 +266,28 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                     <div class="form-group">
                                         <label class="control-label col-sm-4" for="cep">CEP:</label>
                                         <div class="col-sm-2">
-                                            <input type="text" class="form-control" name="cep" id="cep" required>
+                                            <input type="text" class="form-control" name="cep" id="cep" size="10" maxlength="9" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-4" for="estado">Estado:</label>
+                                        <label class="control-label col-sm-4" for="uf">Estado:</label>
                                         <div class="col-sm-3">
-                                            <input type="text" class="form-control" name="estado" id="estado" required>
+                                            <input type="text" class="form-control" name="uf" id="uf" size="2" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-4" for="cidade">Cidade:</label>
                                         <div class="col-sm-3">
-                                            <input type="text" class="form-control" name="cidade" id="cidade" required>
+                                            <input type="text" class="form-control" name="cidade" id="cidade" size="60" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-4" for="bairro">Bairro:</label>
                                         <div class="col-sm-3">
-                                            <input type="bairro" class="form-control" name="bairro" id="bairro" required>
+                                            <input type="text" class="form-control" name="bairro" id="bairro"  size="60" required>
                                         </div>
                                     </div>
 
@@ -229,7 +299,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
                                         <label class="control-label col-sm-2" for="logradouro">Logradouro:</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="logradouro" id="logradouro" required>
+                                            <input type="text" class="form-control" name="logradouro" id="logradouro"  size="60" required>
                                         </div>
                                     </div>
                                     <div class = "form-group">

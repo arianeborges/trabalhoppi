@@ -1,5 +1,59 @@
 <?php include "header.php" ;?>
 
+<?php
+
+require "conexaobd.php"; //inclui arquivo com os dados e funções de conexão
+
+function filtraEntrada($dado){
+
+  $dado = trim($dado);
+  $dado = stripslashes($dado);
+  $dado = htmlspecialchars($dado);
+
+  return $dado;
+}
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+
+  $erro = "";
+
+  $especialidade = $medico = $dataconsulta = $horario = $nome = $telefone = "";
+
+  $especialidade = filtraEntrada($_POST["especialidade"]);
+  $medico = filtraEntrada($_POST["medico"]); 
+  $dataconsulta = filtraEntrada($_POST["dataconsulta"]); 
+  $horario = filtraEntrada($_POST["horario"]); 
+  $nome = filtraEntrada($_POST["nome"]); 
+  $telefone = filtraEntrada($_POST["telefone"]); 
+
+  try{
+
+    $conexao = conectabd();
+
+    $sql = "INSERT INTO Funcionario(codAgendamento, dataconsulta, horario, codFuncionario, codPaciente) 
+    VALUES (null,'$dataconsulta','$horario','$codFuncionario','$codPaciente')"; 
+
+    if(! $conexao->query($sql))
+    throw new Exception ("Falha na inserção dos dados: " . $conexao->error);
+
+    //inserindo paciente
+    $sql1 = "INSERT INTO Paciente(id, nome, telefone) 
+    VALUES (null,'$nome','$telefone')"; 
+
+    if(! $conexao->query($sql1))
+    throw new Exception ("Falha na inserção dos dados: " . $conexao->error);
+    
+    $ultimo_id = $conexao->insert_id;
+    
+    $formProcSucesso = true;
+  }catch(Exception $e){
+
+    $erro = $e->getMessage();
+  }
+
+}
+?>
+
   <h2> Agendamento de consulta </h2>
 
   <div class="container agendamento card">
@@ -25,9 +79,9 @@
             </select>
           </div>
 
-          <label class="control-label col-sm-2" for="nomemedico">Médico:</label>
+          <label class="control-label col-sm-2" for="medico">Médico:</label>
           <div class="col-sm-2">
-            <select name="nomemedico" class="form-control">
+            <select name="medico" class="form-control">
               <option value="" selected>Selecione</option>
             </select>
           </div>
@@ -40,25 +94,25 @@
             <input type="date" class="form-control" name="dataconsulta">
           </div>
 
-          <label class="control-label col-sm-2" for="horariodisponivel">Horário da consulta:</label>
+          <label class="control-label col-sm-2" for="horario">Horário da consulta:</label>
           <div class="col-sm-2">
-            <select name="horariodisponivel" class="form-control">
+            <select name="horario" class="form-control">
               <option value="" selected>Selecione</option>
             </select>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="control-label col-sm-2" for="nomepaciente">Nome:</label>
+          <label class="control-label col-sm-2" for="paciente">Nome:</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="nomepaciente" placeholder="Escreva seu nome..">
+            <input type="text" class="form-control" name="paciente" placeholder="Escreva seu nome..">
           </div>
         </div>
 
         <div class="form-group">
           <label class="control-label col-sm-2" for="telefonepaciente">Telefone Celular:</label>
           <div class="col-sm-2">
-            <input type="text" name="telefonepaciente" id="telefonepaciente">
+            <input type="text" name="telefone" id="telefone">
           </div>
         </div>
 
