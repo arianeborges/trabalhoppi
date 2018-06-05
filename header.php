@@ -60,7 +60,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     <script type="text/javascript" src="./js/jquery.maskedinput-1.3.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="js/responsiveslides.min.js"></script>
-    <script src="js/scriptagendamento.js"></script>
     <script src="js/scriptgaleria.js"></script>
     <script src="js/scriptindex.js"></script>
 
@@ -109,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                             } 
 
                             if ( isset($_SESSION['login']) && $_SESSION['login'] == true) {
-                                echo '<li> <a href="paginarestrita.php" data-title="Acesso Restrito"> ACESSO AO SISTEMA </a>
+                                echo '<li> <a href="paginarestrita.php" data-title="Acesso Restrito"> ÁREA ADMINISTRATIVA </a>
                                         </li>';
 
                                 echo '<li> <a href="logout.php" data-title="Logout">

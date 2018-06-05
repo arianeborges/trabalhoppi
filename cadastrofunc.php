@@ -96,22 +96,14 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
   $nome = filtraEntrada($_POST["nome"]);
   $datanascimento = filtraEntrada($_POST["datanascimento"]); 
   $sexo = filtraEntrada($_POST["sexo"]); 
-<<<<<<< HEAD
-  $ufcivil = filtraEntrada($_POST["ufcivil"]); 
-  $cargo = filtraEntrada($_POST["cargo"]); 
-  $especialidade = filtraEntrada($_POST["especialidade"]); 
-  $cpf = filtraEntrada($_POST["cpf"]); 
-  $rg = filtraEntrada($_POST["rg"]); 
-=======
   $estadocivil = filtraEntrada($_POST["estadocivil"]); 
-  $cargofunc = filtraEntrada($_POST["cargofunc"]);
+  $cargo = filtraEntrada($_POST["cargo"]);
 
   if(isset($_POST["especialidade"]))
     $especialidade = filtraEntrada($_POST["especialidade"]); 
 
-  $cpffunc = filtraEntrada($_POST["cpffunc"]); 
-  $rgfunc = filtraEntrada($_POST["rgfunc"]); 
->>>>>>> e8e7af7ab6fced065428a1f5c2e4eb77b521369c
+  $cpf = filtraEntrada($_POST["cpf"]); 
+  $rg = filtraEntrada($_POST["rg"]); 
   $outro = filtraEntrada($_POST["outro"]); 
   $cep = filtraEntrada($_POST["cep"]); 
   $uf = filtraEntrada($_POST["uf"]); 
@@ -126,13 +118,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $conexao = conectabd();
 
-<<<<<<< HEAD
-    $sql1 = "INSERT INTO Funcionario(id, nomefunc, datanascimento, sexo, estadocivil, cargo, especialidade, cpf, rg, outro) 
+    $sql1 = "INSERT INTO Funcionario(id, nome, datanascimento, sexo, estadocivil, cargo, especialidade, cpf, rg, outro) 
     VALUES (null,'$nome','$datanascimento','$sexo','$estadocivil','$cargo','$especialidade','$cpf','$rg','$outro')"; 
-=======
-    $sql1 = "INSERT INTO Funcionario(id, nome, datanascimento, sexo, estadocivil, cargofunc, especialidade, cpffunc, rgfunc, outro) 
-    VALUES (null,'$nome','$datanascimento','$sexo','$estadocivil','$cargofunc','$especialidade','$cpffunc','$rgfunc','$outro')"; 
->>>>>>> e8e7af7ab6fced065428a1f5c2e4eb77b521369c
 
     if(! $conexao->query($sql1))
     throw new Exception ("Falha na inserção dos dados: " . $conexao->error);
@@ -156,7 +143,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     <div class="container cadastro">
             <div class = "col-sm-offset-1 col-sm-10">
-                <h2> CADASTRO DE NOVO FUNCIONARIO </h2>
+                <h2 class = "listagens"> CADASTRO DE NOVO FUNCIONÁRIO </h2>
                 <form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">   
                 <div class="panel with-nav-tabs panel-default">
                     <div class="panel-heading">
@@ -198,9 +185,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-4" for="ufcivil">uf Civil:</label>
+                                        <label class="control-label col-sm-4" for="estadocivil">Estado Civil:</label>
                                         <div class="col-sm-3">
-                                            <select name="ufcivil" id="ufcivil" required>
+                                            <select name="estadocivil" id="estadocivil" required>
                                                 <option value="" selected>Selecione</option>
                                                 <option value="solteiro">Solteiro</option>
                                                 <option value="casado">Casado</option>
@@ -258,12 +245,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                             <div class="tab-pane fade" id="documentos">
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="cpf
-                                ">CPF:</label>
+                                        <label class="control-label col-sm-3" for="cpf">CPF:</label>
                                         <div class="col-sm-2">
-                                            <input type="text" class="form-control" name="cpf
-                                    " id="cpf
-                                    " required>
+                                            <input type="text" class="form-control" name="cpf" id="cpf" required>
                                         </div>
                                     </div>
 

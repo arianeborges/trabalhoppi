@@ -70,7 +70,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     </div>
 
                   <div class="col-sm-offset-2">
-                      <button type="submit" class="btn btn-primary">Enviar</button>
+                      <button type="submit" class="btn btn-primary">Enviar</button>                  
+                      <button type="reset" class="btn btn-danger">Limpar</button>
                   </div>
                   
             </form>

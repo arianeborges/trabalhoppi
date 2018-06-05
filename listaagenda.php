@@ -9,10 +9,10 @@ if(!$_SESSION['login']) {
 
 ?>
 
-  <div class="container">	  
+  <div class="container lista">	  
   	<h2 class="listagens">LISTA DE CONTATOS</h2>
 	  		<div class="table-responsive">
-				<table class="table table-striped">
+				<table class="table">
 					<thead>
 						<tr class="tabelalistagens">
 							<th>Nome do Médico</th>
