@@ -273,6 +273,14 @@ h2{
     width: 60%; 
 }
 
+@media (min-width: 768px) {
+    .navbar-nav.navbar-center {
+      position: absolute;
+      left: 50%;
+      transform: translatex(-50%);
+     }
+}
+
 /* fim css pagina header */
 
 /* css pagina listagens */

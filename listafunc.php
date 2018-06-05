@@ -56,8 +56,8 @@ try{
 									<tr>
 									<td>$funcionario->nome</td>
 									<td>$funcionario->sexo</td>
-									<td>$funcionario->cargofunc</td>
-									<td>$funcionario->rgfunc</td>
+									<td>$funcionario->cargo</td>
+									<td>$funcionario->rg</td>
 									<td>$funcionario->logradouro</td>  
 									<td>$funcionario->cidade</td>       
 									</tr>      

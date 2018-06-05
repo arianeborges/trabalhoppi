@@ -54,10 +54,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     <div class="col-sm-2">
                       <select name="motivo" class="form-control" required>
                           <option value="" selected>Selecione</option>
-                          <option value="sugestao">Sugestão</option>
-                          <option value="duvida">Dúvida</option>
-                          <option value="elogio">Elogio</option>
-                          <option value="reclamar">Reclamação</option>
+                          <option value="Sugestão">Sugestão</option>
+                          <option value="Dúvida">Dúvida</option>
+                          <option value="Elogio">Elogio</option>
+                          <option value="Reclamação">Reclamação</option>
                       </select>
                     </div>
                   </div>                  
@@ -69,9 +69,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                         </div>
                     </div>
 
-                  <div class="col-sm-offset-2">
-                      <button type="submit" class="btn btn-primary">Enviar</button>                  
+                  <div class="col-sm-offset-2">                                     
                       <button type="reset" class="btn btn-danger">Limpar</button>
+                      <button type="submit" class="btn btn-primary">Enviar</button>
                   </div>
                   
             </form>

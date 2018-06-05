@@ -35,10 +35,10 @@
     <div class="table-responsive">
     <table class="center">
         <tr class = "video">
-            <td> <embed src="https://www.youtube.com/embed/f_ed-M_3xqk?rel=0&loop=1&autoplay=1" frameborder="0" allowfullscreen="true"> </td>
             <td> <embed src="https://www.youtube.com/embed/SHNMBVZa6NA?rel=0&loop=1&autoplay=1" frameborder="0" allowfullscreen="true"> </td>
+            <td> <embed src="https://www.youtube.com/embed/f_ed-M_3xqk?rel=0&loop=1&autoplay=1" frameborder="0" allowfullscreen="true"> </td>
             <td> <embed src="https://www.youtube.com/embed/v99PM9X_Uh8?rel=0&loop=1&autoplay=1" frameborder="0" allowfullscreen="true"> </td>
-        </tr>
+            </tr>
         <tr class="galeria">
             <td><img class="imagem" src="galeria/slideshow1.png" id="img01"></td>
             <td><img class="imagem" src="galeria/slideshow3.png" id="img03"></td>           

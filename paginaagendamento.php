@@ -73,11 +73,11 @@ require_once "conexaobd.php";
       $medico = $_POST["nomemedico"];
       $data = $_POST["dataconsulta"];
       $horario = $_POST["horariodisponivel"];
-      $nome = $_POST["nomepaciente"];
+      $paciente = $_POST["paciente"];
       $telefone = $_POST["telefonepaciente"];
     
       //adiciona novo paciente
-      $paciente_query = "INSERT INTO Paciente(nome, telefone) VALUES ('$nome', '$telefone')";
+      $paciente_query = "INSERT INTO Paciente(paciente, telefone) VALUES ('$paciente', '$telefone')";
     
       $res = $conn->query($paciente_query);
     
@@ -100,7 +100,8 @@ require_once "conexaobd.php";
       $id_funcionario = $row["id"];
     
       //realiza agendamento
-      $agenda_query = "INSERT INTO agenda(dataconsulta, horaconsulta, codFuncionario, codPaciente) VALUES ('$data', '$horario', '$id_funcionario', '$id_paciente')";
+      $agenda_query = "INSERT INTO Agenda(codAgendamento, dataconsulta, horaconsulta, codFuncionario, codPaciente) 
+                        VALUES (null, '$data', '$horario', '$id_funcionario', '$id_paciente')";
     
       $res = $conn->query($agenda_query);
     
@@ -140,15 +141,15 @@ jQuery(function ($) {
             <div class="col-sm-3">
               <select id="especialidademedica" name="especialidademedica" class="form-control" onchange="buscaMedico(this.value)">
                 <option value="" selected>Selecione</option>
-                <option value="cirurgiaodentista">Cirurgião Dentista</option>
-                <option value="odontopediatra">Odontopediatra</option> <!-- saúde bucal das crianças -->
-                <option value="odontohebiatria">Odontohebiatria</option> <!-- saúde bucal dos adolescentes -->
-                <option value="ortodontista">Ortodontista</option> <!-- aparelhos ortodônticos -->
-                <option value="odontologiaestetica">Odontologia Estética</option><!-- clareamentos dentais, uso de resinas e peeling gengival -->
-                <option value="endodontista">Endodontista</option><!-- tratamento de canal  -->
-                <option value="periodontista">Periodontista</option><!-- cuidados relacionados a doenças de gengiva -->
-                <option value="protesista">Protesista</option> <!-- reabilitação bucal: estética, fonética e mastigação -->
-                <option value="implantodontista">Implantodontista</option> <!-- inserção de protéses fixas/implantes -->
+                <option value="CirurgiaoDentista">Cirurgião Dentista</option>
+                <option value="Odontopediatra">Odontopediatra</option> <!-- saúde bucal das crianças -->
+                <option value="Odontohebiatria">Odontohebiatria</option> <!-- saúde bucal dos adolescentes -->
+                <option value="Ortodontista">Ortodontista</option> <!-- aparelhos ortodônticos -->
+                <option value="OdontologiaEstetica">Odontologia Estética</option><!-- clareamentos dentais, uso de resinas e peeling gengival -->
+                <option value="Endodontista">Endodontista</option><!-- tratamento de canal  -->
+                <option value="Periodontista">Periodontista</option><!-- cuidados relacionados a doenças de gengiva -->
+                <option value="Protesista">Protesista</option> <!-- reabilitação bucal: estética, fonética e mastigação -->
+                <option value="Implantodontista">Implantodontista</option> <!-- inserção de protéses fixas/implantes -->
               </select>
             </div>
 
@@ -177,7 +178,7 @@ jQuery(function ($) {
         <div class="form-group">
             <label class="control-label col-sm-3" for="paciente">Nome:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" name="nomepaciente" placeholder="Escreva seu nome.." required>
+              <input type="text" class="form-control" name="paciente" id="paciente" placeholder="Escreva seu nome.." required>
             </div>
         </div>
 
@@ -188,9 +189,9 @@ jQuery(function ($) {
             </div>
         </div>
 
-        <div class="col-sm-offset-3">
+        <div class="col-sm-offset-3">          
+          <button type="reset" class="btn btn-danger">Limpar</button>
             <button type="submit" class="btn btn-primary">Enviar</button>
-            <button type="reset" class="btn btn-danger">Limpar</button>
         </div>
 
 

@@ -8,11 +8,24 @@
         public $codPaciente;
     }
 
+    class Funcionario{
+        public $nome;
+        public $especialidade;
+    }
+
+    class Paciente{
+        public $paciente;
+        public $telefone;
+    }
+
     function getAgenda($conexao){
 
         $arrayAgenda = [];
 
-        $sql = "SELECT * FROM Agenda";
+        $sql = "SELECT F.nome, F.especialidade, A.dataconsulta, A.horaconsulta, P.paciente, P.telefone
+                FROM Agenda as A, Funcionario as F, Paciente as P
+                WHERE A.codFuncionario = F.id AND A.codPaciente = P.id
+                ORDER BY F.nome, A.dataconsulta, A.horaconsulta";
 
         $result = $conexao->query($sql);
 
@@ -23,11 +36,12 @@
             while($row = $result->fetch_assoc()){
 
                 $agenda = new Agenda();
-                $agenda->codAgendamento = $row["codAgendamento"];
+                $agenda->codFuncionario = $row["nome"];                
+                $agenda->especialidade = $row["especialidade"];
                 $agenda->dataconsulta = $row["dataconsulta"];
                 $agenda->horaconsulta = $row["horaconsulta"];
-                $agenda->codFuncionario = $row["codFuncionario"];
-                $agenda->codPaciente = $row["codPaciente"];
+                $agenda->codPaciente = $row["paciente"];
+                $agenda->telefone = $row["telefone"];
 
                 $arrayAgenda[] = $agenda;
 

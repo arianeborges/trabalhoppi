@@ -3,8 +3,8 @@
     class Funcionario{
         public $nome;
         public $sexo;
-        public $cargofunc;
-        public $rgfunc;
+        public $cargo;
+        public $rg;
         public $especialidade;
     }
 

@@ -180,8 +180,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-4" for="sexo">Sexo:</label>
-                                        <input type="radio" name="sexo" id="sexo" value="M">Masculino</label>
-                                        <input type="radio" name="sexo" id="sexo" value="F">Feminino</label>
+                                        <div class="col-sm-3">
+                                            <input type="radio" name="sexo" id="sexo" value="M"> Masculino</label>
+                                            <input type="radio" name="sexo" id="sexo" value="F"> Feminino</label>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -189,10 +191,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                         <div class="col-sm-3">
                                             <select name="estadocivil" id="estadocivil" required>
                                                 <option value="" selected>Selecione</option>
-                                                <option value="solteiro">Solteiro</option>
-                                                <option value="casado">Casado</option>
-                                                <option value="divorciado">Divorciado</option>
-                                                <option value="viuvo">Viuvo</option>
+                                                <option value="Solteiro">Solteiro</option>
+                                                <option value="Casado">Casado</option>
+                                                <option value="Divorciado">Divorciado</option>
+                                                <option value="Viuvo">Viuvo</option>
                                             </select>
                                         </div>
                                     </div>
@@ -202,10 +204,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                         <div class="col-sm-4">
                                             <select name="cargo" id="cargo" required>
                                                 <option value="" selected>Selecione</option>
-                                                <option value="secretario">Secretário</option>
-                                                <option value="dentista">Medico</option>
-                                                <option value="enfermeiro">Enfermeiro</option>
-                                                <option value="informatica">Suporte</option>
+                                                <option value="Secretario">Secretário</option>
+                                                <option value="Dentista">Médico</option>
+                                                <option value="Enfermeiro">Enfermeiro</option>
+                                                <option value="Informática">Suporte</option>
                                             </select>
                                         </div>
                                     </div>
@@ -215,22 +217,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                         <div class="col-sm-3">
                                             <select name="especialidade" id="especialidade" required>
                                                 <option value="" selected>Selecione</option>
-                                                <option value="cirurgiaodentista">Cirurgião Dentista</option>
-                                                <option value="odontopediatra">Odontopediatra</option>
+                                                <option value="CirurgiaoDentista">Cirurgião Dentista</option>
+                                                <option value="Odontopediatra">Odontopediatra</option>
                                                 <!-- saúde bucal das crianças -->
-                                                <option value="odontohebiatria">Odontohebiatria</option>
+                                                <option value="Odontohebiatria">Odontohebiatria</option>
                                                 <!-- saúde bucal dos adolescentes -->
-                                                <option value="ortodontista">Ortodontista</option>
+                                                <option value="Ortodontista">Ortodontista</option>
                                                 <!-- aparelhos ortodônticos -->
-                                                <option value="odontologiaestetica">Odontologia Estética</option>
+                                                <option value="OdontologiaEstética">Odontologia Estética</option>
                                                 <!-- clareamentos dentais, uso de resinas e peeling gengival -->
-                                                <option value="endodontista">Endodontista</option>
+                                                <option value="Endodontista">Endodontista</option>
                                                 <!-- tratamento de canal  -->
-                                                <option value="periodontista">Periodontista</option>
+                                                <option value="Periodontista">Periodontista</option>
                                                 <!-- cuidados relacionados a doenças de gengiva -->
-                                                <option value="protesista">Protesista</option>
+                                                <option value="Protesista">Protesista</option>
                                                 <!-- reabilitação bucal: estética, fonética e mastigação -->
-                                                <option value="implantodontista">Implantodontista</option>
+                                                <option value="Implantodontista">Implantodontista</option>
                                                 <!-- inserção de protéses fixas/implantes -->
                                             </select>
                                         </div>
@@ -351,11 +353,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <script>
 
         $(document).ready(function() {
-            $("#cargofunc").on('change', function(e) {
+            $("#cargo").on('change', function(e) {
 
                 var opt = $("option:selected", this).text();
 
-                if(opt == "Medico")
+                if(opt == "Médico")
                     $("#especialidades").show();
                 else 
                     $("#especialidades").hide();  

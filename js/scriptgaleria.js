@@ -6,3 +6,12 @@ $(document).ready(function () {
                 
                 
 });
+
+$(document).ready(function () {
+                    
+    $(".video").each(function(i) {
+        $(this).delay(550*i).fadeIn();
+    });
+                
+                
+});
