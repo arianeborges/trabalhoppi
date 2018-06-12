@@ -1,4 +1,14 @@
 /* css pagina index */
+body{
+    background-color: #C4E9F9;
+
+}
+
+h2{
+    color: black;
+    text-align: center;
+    font-size: 20pt;
+}
 
 .success-message {
     color:green;
@@ -27,7 +37,6 @@
     }
 }
 
-
 .card {
     padding: 50px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -47,12 +56,6 @@
 .nice-paragraph {
     font-size: 1.5em;
 }
-
-/* .margin-above {
-    border-top: 1px solid gray;
-    margin-top: 20px;
-    padding-top: 20px;
-} */
 
 .autoslides1 {
     position: relative;
@@ -147,7 +150,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #3E67FF ;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -157,7 +160,7 @@
     padding: 20px 100px 8px 32px;
     text-decoration: none;
     font-size: 20px;
-    color: #3c9ff0;
+    color: black;
     display: block;
     transition: 0.3s;
 }
@@ -184,15 +187,6 @@
 
 /* css pagina cadastrofunc */
 
-/* body{
-	background-color: antiquewhite;
-}
-
-h2{
-	color: black;
-	text-align: left;
-	font-size: 18pt;
-} */
 .cadastro {
 	width: 100%;
 	padding-bottom: 50px;
@@ -213,21 +207,21 @@ h2{
 .with-nav-tabs.panel-default .nav-tabs > li > a,
 .with-nav-tabs.panel-default .nav-tabs > li > a:hover,
 .with-nav-tabs.panel-default .nav-tabs > li > a:focus {
-    color: #777;
+    color: #3E67FF ;
 }
 .with-nav-tabs.panel-default .nav-tabs > .open > a,
 .with-nav-tabs.panel-default .nav-tabs > .open > a:hover,
 .with-nav-tabs.panel-default .nav-tabs > .open > a:focus,
 .with-nav-tabs.panel-default .nav-tabs > li > a:hover,
 .with-nav-tabs.panel-default .nav-tabs > li > a:focus {
-    color: #777;
+    color: #3E67FF ;
 	background-color: #ddd;
 	border-color: transparent;
 }
 .with-nav-tabs.panel-default .nav-tabs > li.active > a,
 .with-nav-tabs.panel-default .nav-tabs > li.active > a:hover,
 .with-nav-tabs.panel-default .nav-tabs > li.active > a:focus {
-	color: #555;
+	color: #3E67FF ;
 	background-color: #fff;
 	border-color: #ddd;
 	border-bottom-color: transparent;
@@ -270,7 +264,7 @@ h2{
 }
 
 .modal-header {
-    background-color: greenyellow;
+    background-color: #3E67FF;
 }
 
 .modal-content {
@@ -279,18 +273,26 @@ h2{
     width: 60%; 
 }
 
+@media (min-width: 768px) {
+    .navbar-nav.navbar-center {
+      position: absolute;
+      left: 50%;
+      transform: translatex(-50%);
+     }
+}
+
 /* fim css pagina header */
 
 /* css pagina listagens */
-/* 
-body{
-    background-color: #F0FFFF ;
-} */
+.lista{
+    
+    background-color: #F4F4F4;
+}
 
 .listagens{
     color: black;
-    text-align: left;
-    font-size: 15pt;
+    text-align: center;
+    font-size: 20pt;
 }
 
 .table-striped {
@@ -305,17 +307,10 @@ body{
     padding: auto;
 } 
 
-.tabelalistagens tr:nth-child(even) {
-    background-color: #f2f2f2
-} 
-
 /* fim css pagina listagens */
 
 /* fim css pagina agendamento */
 
-h2{
-    text-align: center;
-}
 
 input[type=text], select, textarea {
     width: 100%; 
@@ -330,10 +325,9 @@ input[type=text], select, textarea {
 
 .agendamento {
     border-radius: 5px;
-    background-color: gainsboro;
-    padding: 20px;
-    margin: auto;
-} 
+    background-color: #F4F4F4;
+    padding-top: 40px;
+}  
 
 /* fim css pagina agendamento */
 
@@ -350,54 +344,11 @@ input[type=text], select, textarea {
     resize: vertical 
 }
 
-input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
 .contato {
     border-radius: 5px;
-    background-color: gainsboro;
-    padding: 20px;
-    margin: auto;
+    background-color: #F4F4F4;
+    padding: 40px;
 } 
 
-h2{
-    text-align: center;
-}
 
 /* fim css pagina contato */
-
-/*  css pagina galeria */
-
-.center {
-    margin: 0 auto;
-    border: 0;
-}
-
-.galeria th, td {
-    width: 300px;
-    height: 250px;
-    padding: 10px;
-}
-
-.imagem {
-    width: 300px;
-    height: 250px;
-    border-radius: 20px;
-    display: none;
-}
-
-h2{
-    text-align: center;
-}
-
-/* fim css pagina galeria */

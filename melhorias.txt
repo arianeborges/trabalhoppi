@@ -1,0 +1,12 @@
+Requisito
+1- Validação da data de nascimento do cadastro do funcionário e datas inválidas
+2- Utilize o conceito de transação ao realizar a inserção dos dados do agendamento nas duas tabelas do banco de dados (Agenda e Paciente);
+
+Melhorias:
+1- Mudanças na mensagem
+2- Responsividade do menu header
+3- Botão Avançar na pagina de cadastro do funcionário
+4- Adicionar Quantidade na pagina principal de Pagina Restrita
+
+Bug:
+1- Ao fazer login nas telas Contato e Agendamento aparece erro do php e insere no banco

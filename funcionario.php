@@ -3,8 +3,8 @@
     class Funcionario{
         public $nome;
         public $sexo;
-        public $cargofunc;
-        public $rgfunc;
+        public $cargo;
+        public $rg;
         public $especialidade;
     }
 
@@ -17,7 +17,7 @@
 
         $arrayFuncionario = [];
 
-        $sql = "SELECT F.nome, F.sexo, F.cargofunc, F.rgfunc, F.especialidade, E.cidade, E.logradouro 
+        $sql = "SELECT F.nome, F.sexo, F.cargo, F.rg, F.especialidade, E.cidade, E.logradouro 
                 FROM Funcionario as F, EnderecoFunc as E 
                 WHERE F.id = E.id_funcionario";
 
@@ -31,15 +31,11 @@
                 $funcionario = new Funcionario();
                 $funcionario->nome = $row["nome"];
                 $funcionario->sexo = $row["sexo"];
-                $funcionario->cargofunc = $row["cargofunc"];
-                $funcionario->rgfunc = $row["rgfunc"];
+                $funcionario->cargo = $row["cargo"];
+                $funcionario->rg = $row["rg"];
                 $funcionario->cidade = $row["cidade"];
                 $funcionario->logradouro = $row["logradouro"];
                 $funcionario->especialidade = $row["especialidade"];
-
-                // $endereco = new EnderecoFunc();
-                // $endereco->cidade = $row["cidade"];
-                // $endereco->logradouro = $row["logradouro"];
 
                 $arrayFuncionario[] = $funcionario;
 

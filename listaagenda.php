@@ -8,11 +8,30 @@ if(!$_SESSION['login']) {
 }
 
 ?>
+<?php
 
-  <div class="container">	  
-  	<h2 class="listagens">LISTA DE CONTATOS</h2>
+require "conexaobd.php"; //inclui arquivo com os dados e funções de conexão
+require "agenda.php";
+
+$arrayAgenda = "";
+$erro = "";	
+
+try{
+
+	$conexao = conectaBD();
+	$arrayAgenda = getAgenda($conexao);
+
+}catch(Exception $e){
+
+	$erro = $e->getMessage();
+}
+
+?>
+
+  <div class="container lista">	  
+  	<h2 class="listagens">LISTA DE AGENDAMENTOS</h2>
 	  		<div class="table-responsive">
-				<table class="table table-striped">
+				<table class="table">
 					<thead>
 						<tr class="tabelalistagens">
 							<th>Nome do Médico</th>
@@ -24,29 +43,30 @@ if(!$_SESSION['login']) {
 						</tr>
 					</thead>
 					
-					<!-- <tbody>
-				<?php
-				
-					if ($arraySeries != "")
-					{
+				<tbody>
+					<?php
 					
-							foreach ($arraySeries as $serie)
-							{       
-								echo "
-								<tr>
-								<td>$serie->nome</td>
-								<td>$serie->lugar</td>
-								<td>$serie->temporadas</td>
-								<td>$serie->genero</td>
-								<td>$serie->datalanc</td>         
-								</tr>      
-								";
-							}
-					}
+						if ($arrayAgenda != "")
+						{
+						
+								foreach ($arrayAgenda as $agenda)
+								{       
+									echo "
+									<tr>
+									<td>$agenda->codFuncionario</td>
+									<td>$agenda->especialidade</td>
+									<td>$agenda->dataconsulta</td>
+									<td>$agenda->horaconsulta</td>
+									<td>$agenda->codPaciente</td>
+									<td>$agenda->telefone</td>       
+									</tr>      
+									";
+								}
+						}
+						
+					?>    
 					
-				?>    
-					
-					</tbody> -->
+				</tbody>
 				</table>
 
 			

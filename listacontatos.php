@@ -1,4 +1,4 @@
-<?php include "sidebar.php" 
+<?php include "sidebar.php"; 
 
 session_start();
 
@@ -8,6 +8,7 @@ if(!$_SESSION['login']) {
 }
 
 ?>
+
 
 <?php
 
@@ -32,7 +33,7 @@ try{
   	<div class="container lista">
 		<h2 class="listagens">LISTA DE CONTATOS</h2>
 		<div class = "table-responsive">
-			<table class="table table-striped">
+			<table class="table">
 				<thead>
 					<tr class="tabelalistagens">
 						<th>Nome do Cliente</th>
