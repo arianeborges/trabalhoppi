@@ -12,7 +12,26 @@ if(!$_SESSION['login']) {
 <!-- Adicionando Javascript -->
 <script type="text/javascript" >
 
+
 $(document).ready(function() {
+
+    var today = new Date();
+
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10){
+        dd='0'+dd
+    } 
+
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+    today = yyyy+'-'+mm+'-'+dd;
+    $("#datanascimento").attr("max", today);
+
 
     function limpa_formulário_cep() {
         // Limpa valores do formulário de cep.
@@ -144,7 +163,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <div class="container cadastro">
             <div class = "col-sm-offset-1 col-sm-10">
                 <h2 class = "listagens"> CADASTRO DE NOVO FUNCIONÁRIO </h2>
-                <form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">   
+                <form id="cadastro-form" class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">   
                 <div class="panel with-nav-tabs panel-default">
                     <div class="panel-heading">
                         <ul class="nav nav-tabs">

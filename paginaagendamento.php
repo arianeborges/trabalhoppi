@@ -5,6 +5,25 @@ require_once "conexaobd.php";
 ?>
 
   <script>
+    $(document).ready(function() {
+      var today = new Date();
+
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+      var yyyy = today.getFullYear();
+
+      if(dd<10){
+          dd='0'+dd
+      } 
+
+      if(mm<10){
+          mm='0'+mm
+      } 
+
+      today = yyyy+'-'+mm+'-'+dd;
+      $("#data").attr("min", today);
+    });
+    
 
   function buscaMedico(especialidade) {
     var jq = $.getJSON("buscamedico.php?especialidade="+especialidade, function(data) {
@@ -75,40 +94,49 @@ require_once "conexaobd.php";
       $horario = $_POST["horariodisponivel"];
       $paciente = $_POST["paciente"];
       $telefone = $_POST["telefonepaciente"];
-    
-      //adiciona novo paciente
-      $paciente_query = "INSERT INTO Paciente(paciente, telefone) VALUES ('$paciente', '$telefone')";
-    
-      $res = $conn->query($paciente_query);
-    
-      if(! $res) {
-        throw new Exception('Ocorreu uma falha ao criar novo paciente: ' . $conn->error);
-      }
-    
-      $id_paciente = $conn->insert_id;
-    
-      //pega o id do medico selecionado
-      $medico_query = "SELECT id FROM funcionario WHERE nome='$medico'";
-    
-      $res = $conn->query($medico_query); 
-    
-      if(! $res) {
-        throw new Exception('Ocorreu uma falha buscar id do medico: ' . $conn->error);
-      }
-    
-      $row = $res->fetch_assoc();
-      $id_funcionario = $row["id"];
-    
-      //realiza agendamento
-      $agenda_query = "INSERT INTO Agenda(codAgendamento, dataconsulta, horaconsulta, codFuncionario, codPaciente) 
-                        VALUES (null, '$data', '$horario', '$id_funcionario', '$id_paciente')";
-    
-      $res = $conn->query($agenda_query);
-    
-      if(! $res) {
-        throw new Exception('Ocorreu uma falha ao inserir na Agenda: ' . $conn->error);
-      } else {
-        echo "<span style='padding-left: 15px' class='success-message'> Agendamento realizado com sucesso!! </span>";
+      
+      try {
+        $conn->begin_transaction();
+        //adiciona novo paciente
+        $paciente_query = "INSERT INTO Paciente(paciente, telefone) VALUES ('$paciente', '$telefone')";
+      
+        $res = $conn->query($paciente_query);
+      
+        if(! $res) {
+          throw new Exception('Ocorreu uma falha ao criar novo paciente: ' . $conn->error);
+        }
+      
+        $id_paciente = $conn->insert_id;
+      
+        //pega o id do medico selecionado
+        $medico_query = "SELECT id FROM funcionario WHERE nome='$medico'";
+      
+        $res = $conn->query($medico_query); 
+      
+        if(! $res) {
+          throw new Exception('Ocorreu uma falha buscar id do medico: ' . $conn->error);
+        }
+      
+        $row = $res->fetch_assoc();
+        $id_funcionario = $row["id"];
+      
+        //realiza agendamento
+        $agenda_query = "INSERT INTO Agenda(codAgendamento, dataconsulta, horaconsulta, codFuncionario, codPaciente) 
+                          VALUES (null, '$data', '$horario', '$id_funcionario', '$id_paciente')";
+      
+        $res = $conn->query($agenda_query);
+      
+        if(! $res) {
+          throw new Exception('Ocorreu uma falha ao inserir na Agenda: ' . $conn->error);          
+        } else {
+          echo "<span style='padding-left: 15px' class='success-message'> Agendamento realizado com sucesso!! </span>";
+        }
+
+        $conn->commit();
+        
+      } catch(Exception $e) {
+        $conn->rollback();
+        echo "correu uma falha ao inserir na Agenda" . $e->getMessage();
       }
     }
   ?>
