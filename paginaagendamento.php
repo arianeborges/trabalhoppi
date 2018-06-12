@@ -71,7 +71,7 @@ require_once "conexaobd.php";
       <div class="form-group">
 
         <?php
-          if ($_SERVER["REQUEST_METHOD"]=="POST") {
+          if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["especialidademedica"]) &&  $_POST["nomemedico"] && $_POST["dataconsulta"] && $_POST["horariodisponivel"] && $_POST["nomepaciente"] && $_POST["telefonepaciente"]) {
 
 
             $conn = conectabd();

@@ -2,7 +2,7 @@
 
 <?php
 
-if($_SERVER["REQUEST_METHOD"]=="POST"){
+if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["motivo"]) && isset($_POST["mensagem"])){
 
   $erro = "";
 
@@ -77,11 +77,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
             <?php
           if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-            if($erro == "")
-              echo "<script>alert('Obrigada pelo seu contato!')</script>";
-            else
-              echo "<script>alert('Contato não realizado:', $erro)</script>";
+            if(isset($erro)) {
+              if($erro == "")
+                echo "<script>alert('Obrigada pelo seu contato!')</script>";
+              else
+                echo "<script>alert('Contato não realizado:', $erro)</script>";
+            }
           }
         ?>
 
