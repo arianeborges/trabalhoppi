@@ -77,14 +77,14 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["nome"]) && isset($_POST["
             </form>
 
             <?php
-          if($_SERVER["REQUEST_METHOD"] == "POST"){
-            if(isset($erro)) {
-              if($erro == "")
-                echo "<script>alert('Obrigada pelo seu contato!')</script>";
-              else
-                echo "<script>alert('Contato não realizado:', $erro)</script>";
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+              if(isset($erro)) {
+                if($erro == "")
+                  echo "<script>alert('Obrigada pelo seu contato!')</script>";
+                else
+                  echo "<script>alert('Contato não realizado:', $erro)</script>";
+              }
             }
-          }
         ?>
 
 </div>

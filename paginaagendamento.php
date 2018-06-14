@@ -85,7 +85,7 @@ require_once "conexaobd.php";
  <?php
     if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["especialidademedica"]) &&  $_POST["nomemedico"] && $_POST["dataconsulta"] && $_POST["horariodisponivel"] && $_POST["paciente"] && $_POST["telefonepaciente"]) {
 
-
+      $erro = "";
       $conn = conectabd();
     
       $especialidade = $_POST["especialidademedica"];
@@ -126,12 +126,12 @@ require_once "conexaobd.php";
       
         $res = $conn->query($agenda_query);
       
+        
         if(! $res) {
           throw new Exception('Ocorreu uma falha ao inserir na Agenda: ' . $conn->error);          
-        } else {
-          echo "<span style='padding-left: 15px' class='success-message'> Agendamento realizado com sucesso!! </span>";
         }
-
+      
+        
         $conn->commit();
         
       } catch(Exception $e) {
@@ -221,10 +221,17 @@ jQuery(function ($) {
           <button type="reset" class="btn btn-danger">Limpar</button>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </div>
-
-
-
     </form>
+    <?php
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+              if(isset($erro)) {
+                if($erro == "")
+                  echo "<script>alert('Obrigada pelo seu contato!')</script>";
+                else
+                  echo "<script>alert('Contato não realizado:', $erro)</script>";
+              }
+            }
+        ?>
 </div>
 
 <?php include "footer.php" ;?>
