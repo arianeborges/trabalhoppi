@@ -239,7 +239,7 @@ h2{
 /* css pagina footer */
 
 .footer {
-    padding-top: 50px;
+    padding-top: 150px;
     width:100%;
     text-align: center;
 }
@@ -248,13 +248,13 @@ h2{
 
 /* css pagina header */
 
-.navbar-inverse {
-    background-color: #3E67FF !important;
-    border-color: #3E67FF !important;
+/*.navbar-inverse {
+    background-color: #3E67FF ;
+    border-color: #3E67FF ;
 }
 
 .navbar-inverse li a {
-    color: #fff !important;
+    color: #fff ;
 }
 
 .navbar-nav.navbar-center {
@@ -262,7 +262,16 @@ h2{
     left: 50%;
     transform: translatex(-50%);
 }
+*/
 
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
 .modal-header {
     background-color: #3E67FF;
 }
@@ -273,13 +282,6 @@ h2{
     width: 60%; 
 }
 
-@media (min-width: 768px) {
-    .navbar-nav.navbar-center {
-      position: absolute;
-      left: 50%;
-      transform: translatex(-50%);
-     }
-}
 
 /* fim css pagina header */
 

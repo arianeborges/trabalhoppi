@@ -85,49 +85,46 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 </head>
 
 <body>
-      
-    <div class="navbar navbar-inverse navbar-static-top ">
-        <div class="container">            
-            
-            <button class="navbar-toggle" data-toggle="collapse" data-target=".collapsibleNavbar">
-                <a class="navbar-brand" href="#">CLÍNICA MELHOR SORRISO</a> 
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+    <div class="container ">
+		<nav class="navbar navbar-default " role="navigation">
+		  <div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			  <a class="navbar-brand" href="#">CLÍNICA MELHOR SORRISO</a>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+		  </div>
 
-            <div class="collapse navbar-collapse collapsibleNavbar">
-                <ul class="nav navbar-nav navbar-center">
-                        <li><a href="index.php"><span class="glyphicon glyphicon-home"> </span></a></li>
-                        <li><a href="paginagaleria.php">GALERIA</a></li>
-                        <li><a href="paginacontato.php">CONTATO</a></li>
-                        <li><a href="paginaagendamento.php">AGENDAMENTO</a></li>
-                        <?php
-                            if (session_status() == PHP_SESSION_NONE) {
-                                session_start();
-                            } 
+		  <div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			  <li><a href="index.php"><span class="glyphicon glyphicon-home"> </span></a></li>
+			  <li><a href="paginagaleria.php">GALERIA</a></li>
+			  <li><a href="paginacontato.php">CONTATO</a></li>
+			  <li><a href="paginaagendamento.php">AGENDAMENTO</a></li>
+                <?php
+                    if (session_status() == PHP_SESSION_NONE) {
+                        session_start();
+                    } 
 
-                            if ( isset($_SESSION['login']) && $_SESSION['login'] == true) {
-                                echo '<li> <a href="paginarestrita.php" data-title="Acesso Restrito"> ÁREA ADMINISTRATIVA </a>
-                                        </li>';
-
-                                echo '<li> <a href="logout.php" data-title="Logout">
-                                            <span class="glyphicon glyphicon-log-out"></span></a>
-                                    </li>';                                   
-                            }
-                            else {
-                                echo '<li><a href="#" data-toggle="modal" data-target="#myModal" data-title="Login">
-                                        <span class="glyphicon glyphicon-user"></span></a>
+                    if ( isset($_SESSION['login']) && $_SESSION['login'] == true) {
+                        echo '<li> <a href="paginarestrita.php" data-title="Acesso Restrito"> ÁREA ADMINISTRATIVA </a>
                                 </li>';
-                            }
-                            
-                        ?>
-                </ul>
-            </div> 
 
-        </div>         
+                        echo '<li> <a href="logout.php" data-title="Logout">
+                                    <span class="glyphicon glyphicon-log-out"></span></a>
+                            </li>';                                   
+                    }
+                    else {
+                        echo '<li><a href="#" data-toggle="modal" data-target="#myModal" data-title="Login">
+                                <span class="glyphicon glyphicon-user"></span></a>
+                        </li>';
+                    }                
+                ?>    
+                </ul>
+            </div>
+        </nav>
     </div>
-        
 
     <!-- Modal html -->
     <div id="myModal" class="modal fade">

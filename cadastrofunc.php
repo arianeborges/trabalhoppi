@@ -15,6 +15,7 @@ if(!$_SESSION['login']) {
 
 $(document).ready(function() {
 
+
     var today = new Date();
 
     var dd = today.getDate();
@@ -258,7 +259,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                     </div>
                                     <div class="col-sm-offset-4">
                                         <button type="reset" class="btn btn-danger">Limpar</button>
-                                        <button type="button" class="btn btn-success">Avançar</button>
+                                        <button type="button" class="btn btn-success" id="prox">Avançar</button>
                                     </div>
 
                             </div>
@@ -287,7 +288,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                     </div>
                                     <div class="col-sm-offset-3">
                                         <button type="reset" class="btn btn-danger">Limpar</button>
-                                        <button type="button" class="btn btn-success">Avançar</button>
+                                        <button type="button" class="btn btn-success" id="prox">Avançar</button>
                                     </div>
 
                             </div>
