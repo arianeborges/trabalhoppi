@@ -1,9 +1,9 @@
 <?php include "header.php" ?>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-sm-4">  
-            <img class="index-banner" src="main-logo.png" alt="Clinica Melhor Sorriso">
+        <div class="col-sm-offset-2 col-sm-8">  
+            <img class="img-responsive" width:100% src="main-logo.png" alt="Clinica Melhor Sorriso">
         </div>
     </div>
 </div>
