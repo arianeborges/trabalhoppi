@@ -1,5 +1,0 @@
-Melhorias:
-1- Mudanças na mensagem
-2- Responsividade do menu header
-3- Botão Avançar na pagina de cadastro do funcionário
-4- Adicionar Quantidade na pagina principal de Pagina Restrita
