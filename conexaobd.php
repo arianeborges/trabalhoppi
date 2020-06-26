@@ -3,7 +3,7 @@
 define("HOST", "localhost"); 
 define("USER", "root");
 define("PASSWORD", ""); 
-define("DATABASE", "clinicamelhorsorriso");
+define("DATABASE", "clinicmedical");
 
 function conectabd()
 {
