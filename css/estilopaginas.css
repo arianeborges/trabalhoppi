@@ -1,6 +1,8 @@
 body{
     /* background-color: #C4E9F9; */
     margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
 }
 
 /* css pagina index */
@@ -33,8 +35,8 @@ body{
     }
 } */
 
-.card {
-    margin: 25px 50px 30px 100px; ;
+.cardbox {
+    margin: 25px 50px 25px 100px;
     width: 80%;
     padding: 30px;
     box-shadow: 0 10px 10px 0 rgba(66, 92, 179, 0.918);
@@ -64,7 +66,6 @@ body{
     list-style: none;
     overflow: hidden;
 }
-  
 
 .autoslides2 img {
     width: 180px;
@@ -80,7 +81,7 @@ body{
 
 /* css pagina restrita */
 
-.card-adm {
+/* .card-adm {
     padding: 0px;
     height: 200px;
 }
@@ -95,7 +96,7 @@ body{
     font-size: 5em;
     text-align: right;
     padding-right: 20px;
-}
+} */
 
 /* .sidenav {
     height: 100%;
@@ -175,50 +176,6 @@ body{
 
 /* fim css pagina listagens */
 
-/* fim css pagina agendamento */
-
-
-input[type=text], select, textarea {
-    width: 100%; 
-    padding: 12px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    box-sizing: border-box; 
-    margin-top: 6px; 
-    margin-bottom: 16px; 
-    resize: vertical 
-}
-
-.agendamento {
-    border-radius: 5px;
-    background-color: #F4F4F4;
-    padding-top: 40px;
-}  
-
-/* fim css pagina agendamento */
-
-/* css pagina contato */
-
-input[type=text], select, textarea {
-    width: 100%; 
-    padding: 12px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    box-sizing: border-box; 
-    margin-top: 6px; 
-    margin-bottom: 16px; 
-    resize: vertical 
-}
-
-.contato {
-    border-radius: 5px;
-    background-color: #F4F4F4;
-    padding: 40px;
-} 
-
-
-/* fim css pagina contato */
-
 /* inicio css header */
 .modalbox{
     margin-left:25%;
@@ -260,41 +217,21 @@ li a:hover:not(.active) {
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto 15% auto; 
-    width: 60%; 
+    width: 80%; 
 }
 /* fim css index */
 
 /* css pagina footer */
-
 .footer {
     width:100%;
+    padding-top: 100%;
     text-align: center;
 }
-
 /* fim css pagina footer */
 
-
-/* inicio css pagina galeria */
-.center {
-    margin: 0 auto;
-    border: 0;
+/* css pagina galeria */
+.boxgaleria {
+    margin: 10px 10px 10px 10px;
+    padding: 15px 15px 0px 15px;
 }
-
-.galeria th, td {
-    width: 300px;
-    height: 250px;
-    padding: 10px;
-}
-
-.imagem {
-    width: 300px;
-    height: 250px;
-    border-radius: 20px;
-    display: none;
-}
-
-.video{
-    width: 300px;
-    height: 250px;
-}
-/* fim css pagina galeria */ 
+/* fim css pagina galeria */
