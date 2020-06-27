@@ -1,7 +1,6 @@
 <?php include "header.php" ?>
 
-
-<div class="row card"> 
+<div class="row card cardbox"> 
     <div class="media">
         <div class="media-body media-middle">
             <h2 class="media-heading">Missão</h2>
@@ -17,7 +16,7 @@
     </div>
 </div>
 
-<div class="row card"> 
+<div class="row card cardbox"> 
     <div class="media">
         <div class="media-body media-middle">
             <h2 class="media-heading">Valores</h2>

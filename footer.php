@@ -1,7 +1,7 @@
         
-        <footer class="footer">
+        <!-- <footer class="footer">
                 <p class="text-muted">© 2018 - Ariane Santos Borges e Weuler Borges Santos Filho</p>
-        </footer>
+        </footer> -->
     </div>
 </body>
 </html>
