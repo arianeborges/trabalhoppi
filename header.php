@@ -54,14 +54,19 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     <title>Clinica Melhor Sorriso</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
     <script type="text/javascript" src="./js/jquery.maskedinput-1.3.1.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="js/responsiveslides.min.js"></script>
     <script src="js/scriptgaleria.js"></script>
     <script src="js/scriptindex.js"></script>
+    <script src="js/scriptmensagem.js"></script>
 
     <!-- estilos css -->
     <link rel="stylesheet" href="css/estilopaginas.css?v=15">
@@ -85,73 +90,62 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 </head>
 
 <body>
-    <div class="container ">
-		<nav class="navbar navbar-default " role="navigation">
-		  <div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-			  <a class="navbar-brand" href="#">CLÍNICA MELHOR SORRISO</a>
-			  <span class="icon-bar"></span>
-			  <span class="icon-bar"></span>
-			  <span class="icon-bar"></span>
-			</button>
-		  </div>
+    <ul>
+     
+    <!-- <li><img class="img-responsive" style="padding-left:50px;width:280px;height:80px;" src="main-logo.png" alt="Clinica Melhor Sorriso"></li> -->
+    <li><a href="index.php"><span class="fas fa-home"> </span></a></li>
+    <li><a href="paginagaleria.php">GALERIA</a></li>
+    <li><a href="paginacontato.php">CONTATO</a></li>
+    <li><a href="paginaagendamento.php">AGENDAMENTO</a></li>
+        <?php
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            } 
 
-		  <div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav">
-			  <li><a href="index.php"><span class="glyphicon glyphicon-home"> </span></a></li>
-			  <li><a href="paginagaleria.php">GALERIA</a></li>
-			  <li><a href="paginacontato.php">CONTATO</a></li>
-			  <li><a href="paginaagendamento.php">AGENDAMENTO</a></li>
-                <?php
-                    if (session_status() == PHP_SESSION_NONE) {
-                        session_start();
-                    } 
-
-                    if ( isset($_SESSION['login']) && $_SESSION['login'] == true) {
-                        echo '<li> <a href="paginarestrita.php" data-title="Acesso Restrito"> ÁREA ADMINISTRATIVA </a>
-                                </li>';
-
-                        echo '<li> <a href="logout.php" data-title="Logout">
-                                    <span class="glyphicon glyphicon-log-out"></span></a>
-                            </li>';                                   
-                    }
-                    else {
-                        echo '<li><a href="#" data-toggle="modal" data-target="#myModal" data-title="Login">
-                                <span class="glyphicon glyphicon-user"></span></a>
+            if ( isset($_SESSION['login']) && $_SESSION['login'] == true) {
+                echo '<li> <a href="paginarestrita.php" data-title="Acesso Restrito"> ÁREA ADMINISTRATIVA </a>
                         </li>';
-                    }                
-                ?>    
-                </ul>
-            </div>
-        </nav>
-    </div>
 
-    <!-- Modal html -->
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">LOGIN</h4>
+                echo '<li> <a href="logout.php" data-title="Logout">
+                            <span class="fas fa-log-out"></span></a>
+                    </li>';                                   
+            }
+            else {
+                echo '<li><a href="#" data-toggle="modal" data-target="#myModal"><span class="fas fa-user"></span></a>
+                </li>';
+            }                
+        ?>
+        <footer class="footer">
+                <p class="text-muted">© 2018 - Ariane Santos Borges e Weuler Borges Santos Filho</p>
+        </footer>
+    </ul>
+
+    <div class="modalbox">
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">ÁREA ADMINISTRATIVA</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   </div>
+                    <form role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                        <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="usuario" class="control-label">Login:</label>
+                                    <input type="text" class="form-control" name="usuario" id="usuario">
+                                </div>
+                                <div class="form-group">
+                                    <label for="senha" class="control-label">Senha:</label>
+                                    <input type="password" class="form-control" name="senha" id="senha">
+                                </div>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancela</button>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </form>
                 </div>
-                <form role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                    <div class="modal-body">
-                            <div class="form-group">
-                                <label for="usuario" class="control-label">Login:</label>
-                                <input type="text" class="form-control" name="usuario" id="usuario">
-                            </div>
-                            <div class="form-group">
-                                <label for="senha" class="control-label">Senha:</label>
-                                <input type="password" class="form-control" name="senha" id="senha">
-                            </div>
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancela</button>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
-                    </div>
-                </form>
             </div>
         </div>
-    </div>
     
